@@ -1,0 +1,1243 @@
+
+/* =========================================
+   TLC - THE LEGEND CLUB
+   FULL CSS - PROFESSIONAL RESPONSIVE
+   ========================================= */
+
+:root {
+  --bg: #070708;
+  --surface: #151517;
+  --silver: #d5d5d8;
+  --muted: #929298;
+  --border: rgba(255,255,255,.12);
+  --red: #a5122b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #f2f2f4;
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    #242427 0%,
+    #101012 35%,
+    #070708 75%
+  );
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* =========================================
+   BACKGROUND EFFECT
+   ========================================= */
+
+.background-effect {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.grid-effect {
+  position: absolute;
+  inset: 0;
+  opacity: .3;
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+  background-size: 55px 55px;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000,
+    transparent
+  );
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  opacity: .13;
+  filter: blur(85px);
+  animation: glowFloat 16s ease-in-out infinite;
+}
+
+.glow-1 {
+  width: 360px;
+  height: 360px;
+  top: -160px;
+  left: -150px;
+  background: #c5c5d0;
+}
+
+.glow-2 {
+  width: 380px;
+  height: 380px;
+  top: 35%;
+  right: -180px;
+  background: #aa1730;
+  animation-delay: -5s;
+}
+
+.glow-3 {
+  width: 400px;
+  height: 400px;
+  bottom: -200px;
+  left: 20%;
+  background: #a8a8b0;
+  animation-delay: -9s;
+}
+
+@keyframes glowFloat {
+  0%, 100% {
+    transform: translate3d(0,0,0) scale(1);
+  }
+  50% {
+    transform: translate3d(25px,-30px,0) scale(1.08);
+  }
+}
+
+.light-beam {
+  position: absolute;
+  width: 420px;
+  height: 120px;
+  left: -600px;
+  opacity: .11;
+  filter: blur(35px);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.3),
+    transparent
+  );
+  animation: beamMove 20s linear infinite;
+}
+
+.beam-1 {
+  top: 20%;
+}
+
+.beam-2 {
+  top: 65%;
+  opacity: .06;
+  animation-delay: -10s;
+}
+
+@keyframes beamMove {
+  from {
+    transform: translate3d(-100px,0,0) rotate(-20deg);
+  }
+  to {
+    transform: translate3d(calc(100vw + 1100px),0,0)
+      rotate(-20deg);
+  }
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #d9d9dd;
+  box-shadow: 0 0 8px #ffffff;
+  opacity: 0;
+  animation: particleMove 14s linear infinite;
+}
+
+.p1 { left: 10%; }
+.p2 { left: 28%; animation-delay: -4s; }
+.p3 { left: 44%; animation-delay: -8s; }
+.p4 { left: 61%; animation-delay: -2s; }
+.p5 { left: 78%; animation-delay: -10s; }
+.p6 { left: 91%; animation-delay: -6s; }
+
+@keyframes particleMove {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: .35;
+  }
+  80% {
+    opacity: .15;
+  }
+  100% {
+    transform: translate3d(20px,-110vh,0);
+    opacity: 0;
+  }
+}
+
+/* Keep content above background */
+
+.header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 68px;
+  padding: 8px clamp(12px,4vw,50px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(7,7,9,.9);
+  border-bottom: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.header-logo {
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.6));
+}
+
+.brand-info h1 {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  letter-spacing: 3px;
+  line-height: 1.1;
+}
+
+.brand-info span {
+  display: block;
+  margin-top: 4px;
+  color: #929299;
+  font-size: 8px;
+  letter-spacing: 1.7px;
+}
+
+.online-status {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: rgba(255,255,255,.035);
+  color: #d1d1d5;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  white-space: nowrap;
+}
+
+.online-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #32d978;
+  box-shadow: 0 0 9px rgba(50,217,120,.7);
+  animation: onlinePulse 2s ease-in-out infinite;
+}
+
+@keyframes onlinePulse {
+  50% { opacity: .5; }
+}
+
+/* =========================================
+   HERO / MAIN TLC LOGO
+   ========================================= */
+
+.hero {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 38px 16px 24px;
+  text-align: center;
+}
+
+.hero-logo-box {
+  position: relative;
+  width: 180px;
+  max-width: 100%;
+  height: 180px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+}
+
+.logo-glow {
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  filter: blur(35px);
+  animation: logoGlow 5s ease-in-out infinite;
+}
+
+.hero-logo {
+  position: relative;
+  width: 100%;
+  max-width: 180px;
+  height: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.6));
+  animation: logoFloat 5s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes logoGlow {
+  50% {
+    opacity: .5;
+    transform: scale(1.08);
+  }
+}
+
+.welcome-text {
+  margin-bottom: 8px;
+  color: #a5a5ac;
+  font-size: 10px;
+  letter-spacing: 5px;
+}
+
+.hero h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(48px,8vw,75px);
+  line-height: 1;
+  letter-spacing: 7px;
+  background: linear-gradient(
+    180deg,
+    #fff,
+    #d5d5d8 55%,
+    #85858c
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero h3 {
+  margin-top: 10px;
+  font-family: Georgia, serif;
+  color: #e0e0e4;
+  font-size: 14px;
+  letter-spacing: 4px;
+}
+
+.hero-description {
+  max-width: 480px;
+  margin: 15px auto 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   SECTIONS
+   ========================================= */
+
+.section {
+  width: min(1050px,100%);
+  margin: 0 auto;
+  padding: 30px 16px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.section-title span {
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #b8b8bd
+  );
+}
+
+.section-title span:last-child {
+  transform: rotate(180deg);
+}
+
+.section-title h2 {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  letter-spacing: 2.5px;
+  text-align: center;
+  color: #eeeef0;
+}
+
+/* =========================================
+   PROMOTIONS
+   ========================================= */
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 12px;
+}
+
+.promo-card {
+  min-width: 0;
+  min-height: 90px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.065),
+    rgba(255,255,255,.018)
+  );
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.promo-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.27);
+}
+
+.promo-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.07);
+  font-size: 21px;
+}
+
+.suit-red {
+  color: #f12646;
+}
+
+.suit-black {
+  color: #f1f1f1;
+}
+
+.promo-info {
+  min-width: 0;
+}
+
+.promo-info small {
+  color: #9a9aa0;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.promo-info h3 {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #f0f0f2;
+}
+
+.rebate-day {
+  margin-top: 5px;
+  color: #b5b5bb;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* =========================================
+   WHATSAPP / TELEGRAM CHANNEL
+   ========================================= */
+
+.channel-grid {
+  width: min(760px,100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+}
+
+.channel-card {
+  min-width: 0;
+  min-height: 84px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.065),
+    rgba(255,255,255,.018)
+  );
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.channel-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.3);
+}
+
+.channel-logo-box {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.035);
+}
+
+.channel-logo {
+  width: 47px;
+  height: 47px;
+  object-fit: contain;
+}
+
+.channel-info {
+  min-width: 0;
+}
+
+.channel-info small {
+  color: #9999a0;
+  font-size: 8px;
+  letter-spacing: .7px;
+}
+
+.channel-info h3 {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.channel-arrow {
+  margin-left: auto;
+  color: #aaaab0;
+  font-size: 24px;
+}
+
+/* =========================================
+   GAME LIST - LARGE PROFESSIONAL LOGOS
+   ========================================= */
+
+.game-description {
+  margin: -8px 0 22px;
+  color: #a0a0a6;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(5,minmax(0,1fr));
+  gap: 12px;
+}
+
+.game-card {
+  width: 100%;
+  min-width: 0;
+  min-height: 175px;
+  padding: 12px 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #f2f2f4;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 15px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.065),
+    rgba(255,255,255,.015)
+  );
+  cursor: pointer;
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.3);
+  background: rgba(255,255,255,.075);
+}
+
+.game-card:active {
+  transform: scale(.98);
+}
+
+.game-card:focus-visible {
+  outline: 2px solid #c4c4cb;
+  outline-offset: 3px;
+}
+
+/* Game logo container */
+
+.game-logo-box {
+  width: 100%;
+  max-width: 135px;
+  height: 125px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+}
+
+/* Game logo only */
+
+.game-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 125px;
+  max-height: 125px;
+  object-fit: contain;
+  filter: drop-shadow(
+    0 5px 9px rgba(0,0,0,.45)
+  );
+}
+
+/* Fallback when game image is missing */
+
+.default-game-logo {
+  display: grid;
+  place-items: center;
+  width: 75px;
+  height: 75px;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  background: #202023;
+  color: #e9e9ed;
+  font-family: Georgia, serif;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Game name */
+
+.game-name {
+  width: 100%;
+  min-height: 16px;
+  color: #eeeeef;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: .25px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+  width: 100%;
+  margin-top: 25px;
+  padding: 32px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.09);
+  background: rgba(0,0,0,.15);
+}
+
+footer img {
+  width: 60px;
+  height: 60px;
+  max-width: 60px;
+  object-fit: contain;
+  margin-bottom: 9px;
+}
+
+footer strong {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  letter-spacing: 3px;
+}
+
+footer span {
+  margin-top: 5px;
+  color: #aaaab0;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+footer p {
+  margin-top: 15px;
+  color: #77777e;
+  font-size: 9px;
+}
+
+/* =========================================
+   CUSTOMER SERVICE POPUP
+   ========================================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.78);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+}
+
+.modal-box {
+  position: relative;
+  z-index: 1;
+  width: min(380px,100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 26px 19px 21px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 20px;
+  background: linear-gradient(
+    145deg,
+    #202023,
+    #0c0c0e
+  );
+  box-shadow: 0 25px 75px rgba(0,0,0,.65);
+  text-align: center;
+  transform: translateY(14px) scale(.97);
+  transition: transform .25s ease;
+}
+
+.modal.active .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.09);
+  color: #ddd;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.modal-logo-box {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 10px;
+  display: grid;
+  place-items: center;
+}
+
+.modal-logo {
+  width: 76px;
+  height: 76px;
+  max-width: 76px;
+  object-fit: contain;
+}
+
+.modal-small {
+  color: #aaaab0;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.modal-box h2 {
+  margin-top: 7px;
+  color: #f2f2f4;
+  font-family: Georgia, serif;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.modal-description {
+  margin: 10px 0 18px;
+  color: #aaaab0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.contact-button {
+  min-height: 65px;
+  margin-top: 10px;
+  padding: 10px 13px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #fff;
+  text-decoration: none;
+  text-align: left;
+  border-radius: 13px;
+  transition:
+    transform .2s ease,
+    filter .2s ease;
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.07);
+}
+
+.whatsapp-button {
+  background: linear-gradient(
+    135deg,
+    #128346,
+    #24b760
+  );
+}
+
+.telegram-button {
+  background: linear-gradient(
+    135deg,
+    #157ab3,
+    #279fd9
+  );
+}
+
+.contact-logo-box {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+}
+
+.contact-logo {
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  object-fit: contain;
+}
+
+.contact-info {
+  min-width: 0;
+}
+
+.contact-info small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 1px;
+  opacity: .85;
+}
+
+.contact-info strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.contact-button b {
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.modal-online {
+  margin-top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #aaaab0;
+  font-size: 8px;
+  letter-spacing: .8px;
+}
+
+.modal-online span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #31db76;
+  box-shadow: 0 0 8px #31db76;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 850px) {
+  .promo-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .game-grid {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .header {
+    min-height: 62px;
+    padding: 7px 11px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .header-logo {
+    width: 43px;
+    height: 43px;
+    max-width: 43px;
+  }
+
+  .brand-info h1 {
+    font-size: 18px;
+  }
+
+  .brand-info span {
+    font-size: 6px;
+    letter-spacing: 1.3px;
+  }
+
+  .online-status {
+    padding: 8px 9px;
+    font-size: 8px;
+    gap: 6px;
+  }
+
+  .hero {
+    padding: 32px 14px 20px;
+  }
+
+  .hero-logo-box {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 17px;
+  }
+
+  .hero-logo {
+    max-width: 160px;
+    max-height: 160px;
+  }
+
+  .welcome-text {
+    font-size: 9px;
+  }
+
+  .hero h2 {
+    font-size: 52px;
+  }
+
+  .hero h3 {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .hero-description {
+    font-size: 11px;
+  }
+
+  .section {
+    padding: 26px 10px;
+  }
+
+  .section-title {
+    gap: 9px;
+    margin-bottom: 18px;
+  }
+
+  .section-title span {
+    width: 23px;
+  }
+
+  .section-title h2 {
+    font-size: 13px;
+    letter-spacing: 1.7px;
+  }
+
+  /* Promotions */
+
+  .promo-grid {
+    gap: 8px;
+  }
+
+  .promo-card {
+    min-height: 79px;
+    padding: 10px 8px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+
+  .promo-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 17px;
+  }
+
+  .promo-info small {
+    font-size: 7px;
+    letter-spacing: .3px;
+  }
+
+  .promo-info h3 {
+    font-size: 11px;
+  }
+
+  .rebate-day {
+    font-size: 8px;
+  }
+
+  /* Channels */
+
+  .channel-grid {
+    gap: 8px;
+  }
+
+  .channel-card {
+    min-height: 73px;
+    padding: 8px;
+    gap: 7px;
+    border-radius: 12px;
+  }
+
+  .channel-logo-box {
+    width: 40px;
+    height: 40px;
+  }
+
+  .channel-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .channel-info small {
+    font-size: 6px;
+    letter-spacing: 0;
+  }
+
+  .channel-info h3 {
+    font-size: 11px;
+  }
+
+  .channel-arrow {
+    font-size: 18px;
+  }
+
+  /* Game List - Large logos */
+
+  .game-description {
+    margin: -7px 0 18px;
+    font-size: 10px;
+  }
+
+  .game-grid {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 8px;
+  }
+
+  .game-card {
+    min-height: 148px;
+    padding: 9px 4px;
+    gap: 6px;
+    border-radius: 13px;
+  }
+
+  .game-logo-box {
+    width: 100%;
+    max-width: 112px;
+    height: 108px;
+  }
+
+  .game-logo {
+    width: 100%;
+    height: 100%;
+    max-width: 108px;
+    max-height: 108px;
+    object-fit: contain;
+  }
+
+  .game-name {
+    font-size: 9px;
+    line-height: 1.3;
+  }
+
+  .default-game-logo {
+    width: 65px;
+    height: 65px;
+    font-size: 20px;
+  }
+
+  /* Footer */
+
+  footer img {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* Background performance */
+
+  .glow {
+    filter: blur(65px);
+  }
+
+  .light-beam {
+    opacity: .07;
+  }
+}
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 360px) {
+
+  .brand-info span {
+    font-size: 5px;
+  }
+
+  .online-status {
+    font-size: 7px;
+    padding: 7px;
+  }
+
+  .game-grid {
+    gap: 6px;
+  }
+
+  .game-card {
+    min-height: 132px;
+    padding: 7px 3px;
+  }
+
+  .game-logo-box {
+    height: 92px;
+  }
+
+  .game-logo {
+    max-height: 92px;
+  }
+
+  .game-name {
+    font-size: 8px;
+  }
+
+  .channel-logo-box {
+    width: 34px;
+    height: 34px;
+  }
+
+  .channel-logo {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
